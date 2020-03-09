@@ -3,23 +3,23 @@ services:
     - docker
 
 before_install:
-    - docker build -t nsreenivas1/react-test -f ./client/Dockerfile.dev ./client
+    - docker build -t nsreenivas108/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run nsreenivas1/react-test npm test -- --coverage
+    - docker run nsreenivas108/react-test npm test -- --coverage
 
 after_success:
-    - docker build -t nsreenivas1/multi-client ./client
-    - docker build -t nsreenivas1/multi-nginx ./nginx
-    - docker build -t nsreenivas1/multi-server ./server
-    - docker build -t nsreenivas1/multi-worker ./worker
+    - docker build -t nsreenivas108/multi-client ./client
+    - docker build -t nsreenivas108/multi-nginx ./nginx
+    - docker build -t nsreenivas108/multi-server ./server
+    - docker build -t nsreenivas108/multi-worker ./worker
 
     # Log in to the docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
     # Take those images and push them to docker hub
-    - docker push nsreenivas1/multi-client
-    - docker push nsreenivas1/multi-nginx
-    - docker push nsreenivas1/multi-server
-    - docker push nsreenivas1/multi-worker
+    - docker push nsreenivas108/multi-client
+    - docker push nsreenivas108/multi-nginx
+    - docker push nsreenivas108/multi-server
+    - docker push nsreenivas108/multi-worker
     
